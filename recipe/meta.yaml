@@ -29,14 +29,14 @@ requirements:
     - msinttypes      # [win]
     - openssl 1.0.*   # [not win]
     - libiconv        # [osx]
-    - curl
-    - libssh2
+    - curl >=7.44.0,<8
+    - libssh2 1.8.*
     - pkg-config      # [not win]
   run:
     - openssl 1.0.*   # [not win]
     - libiconv        # [osx]
-    - curl
-    - libssh2
+    - curl >=7.44.0,<8
+    - libssh2 1.8.*
 
 test:
   requires:
