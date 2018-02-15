@@ -28,13 +28,13 @@ requirements:
     - python          # [win]
     - msinttypes      # [win]
     - openssl 1.0.*   # [not win]
-    - libiconv        # [osx]
+    - libiconv 1.15   # [osx]
     - curl >=7.44.0,<8
     - libssh2 1.8.*
     - pkg-config      # [not win]
   run:
     - openssl 1.0.*   # [not win]
-    - libiconv        # [osx]
+    - libiconv 1.15   # [osx]
     - curl >=7.44.0,<8
     - libssh2 1.8.*
 
