@@ -20,11 +20,11 @@ build:
 requirements:
   build:
     - cmake
-    - msinttypes      # [win]
     - pkg-config      # [not win]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
+    - msinttypes      # [win]
     - openssl         # [not win]
     - libiconv        # [osx]
     - curl
