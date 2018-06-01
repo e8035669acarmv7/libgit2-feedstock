@@ -2,7 +2,7 @@
 {% set version = "0.27.1" %}
 {% set sha256 = "837b11927bc5f64e7f9ab0376f57cfe3ca5aa52ffd2007ac41184b21124fb086" %}
 
-{% set version_minor   = version.split(".")[1] %}
+{% set version_minor = version.split(".")[1] %}
 {% set filename = "v" + version + ".tar.gz" %}
 
 package:
@@ -136,12 +136,12 @@ test:
 
     {% for include in includes %}
     - test -f $PREFIX/include/{{ include }}                 # [not win]
-    - if not exist %LIBRARY_INC%\\{{ include }} exit 1       # [win]
+    - if not exist %LIBRARY_INC%\\{{ include }} exit 1      # [win]
     {% endfor %}
 
-    {% set libs =  linux_libs %}                            # [linux]
-    {% set libs =    osx_libs %}                            # [osx]
-    {% set libs =    win_libs %}                            # [win]
+    {% set libs = linux_libs %}                             # [linux]
+    {% set libs = osx_libs %}                               # [osx]
+    {% set libs = win_libs %}                               # [win]
     
     {% for lib in libs %}
     - test -f $PREFIX/lib/{{ lib }}                         # [not win]
