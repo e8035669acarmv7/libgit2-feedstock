@@ -22,6 +22,8 @@ requirements:
     - cmake
     - msinttypes      # [win]
     - pkg-config      # [not win]
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
   host:
     - openssl         # [not win]
     - libiconv        # [osx]
