@@ -1,9 +1,9 @@
 c_compiler:
-- toolchain_c
+- vs2008
 curl:
 - '7.59'
 cxx_compiler:
-- toolchain_cxx
+- vs2008
 libiconv:
 - '1.15'
 libssh2:
@@ -19,3 +19,6 @@ pin_run_as_build:
     max_pin: x.x
   openssl:
     max_pin: x.x.x
+zip_keys:
+- - c_compiler
+  - cxx_compiler
