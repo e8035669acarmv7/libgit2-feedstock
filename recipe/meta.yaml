@@ -29,11 +29,13 @@ requirements:
     - libiconv        # [osx]
     - curl
     - libssh2
+    - zlib
   run:
     - openssl         # [not win]
     - libiconv        # [osx]
     - curl
     - libssh2
+    - zlib
 
 test:
   commands:
