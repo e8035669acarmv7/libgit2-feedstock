@@ -1,6 +1,6 @@
 {% set name = "libgit2" %}
-{% set version = "0.27.1" %}
-{% set sha256 = "837b11927bc5f64e7f9ab0376f57cfe3ca5aa52ffd2007ac41184b21124fb086" %}
+{% set version = "0.27.2" %}
+{% set sha256 = "ffacdbd5588aeb03e98e3866a7e2ceace468723a439bdc9bb01362fe140fa9e5" %}
 
 {% set version_minor = version.split(".")[1] %}
 {% set filename = "v" + version + ".tar.gz" %}
