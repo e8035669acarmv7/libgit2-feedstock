@@ -1,6 +1,6 @@
 {% set name = "libgit2" %}
-{% set version = "0.28.4" %}
-{% set sha256 = "30f3877469d09f2e4a21be933b4e2800560d16646028dd800744dc5f7fb0c749" %}
+{% set version = "0.99.0" %}
+{% set sha256 = "174024310c1563097a6613a0d3f7539d11a9a86517cd67ce533849065de08a11" %}
 
 {% set version_minor = version.split(".")[1] %}
 {% set filename = "v" + version + ".tar.gz" %}
@@ -15,7 +15,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 0
   run_exports:
     # SONAME is based on minor version
     - {{ pin_subpackage("libgit2", max_pin="x.x") }}
