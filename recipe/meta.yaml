@@ -136,15 +136,11 @@ test:
     # Linux libraries.
     {% set linux_libs = [
             "libgit2.so",
-            "libgit2.so." + version,
-            "libgit2.so." + version_minor
     ] %}
 
     # OSX libraries.
     {% set osx_libs = [
             "libgit2.dylib",
-            "libgit2." + version + ".dylib",
-            "libgit2." + version_minor + ".dylib"
     ] %}
 
     # Windows libraries.
