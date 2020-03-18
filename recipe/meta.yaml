@@ -1,6 +1,6 @@
 {% set name = "libgit2" %}
-{% set version = "0.28.4" %}
-{% set sha256 = "30f3877469d09f2e4a21be933b4e2800560d16646028dd800744dc5f7fb0c749" %}
+{% set version = "0.99.0" %}
+{% set sha256 = "174024310c1563097a6613a0d3f7539d11a9a86517cd67ce533849065de08a11" %}
 
 {% set version_minor = version.split(".")[1] %}
 {% set filename = "v" + version + ".tar.gz" %}
@@ -13,9 +13,12 @@ source:
   fn: {{ filename }}
   url: https://github.com/{{ name }}/{{ name }}/archive/{{ filename }}
   sha256: {{ sha256 }}
+  patches:
+    - htonll-osx.patch  # [osx]
 
 build:
-  number: 1
+  number: 0
+  skip: true  # [win and vc<14]
   run_exports:
     # SONAME is based on minor version
     - {{ pin_subpackage("libgit2", max_pin="x.x") }}
@@ -23,6 +26,7 @@ build:
 requirements:
   build:
     - cmake
+    - ninja
     - pkg-config      # [not win]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
@@ -52,12 +56,17 @@ test:
             "git2/branch.h",
             "git2/buffer.h",
             "git2/checkout.h",
+            "git2/apply.h",
+            "git2/cert.h",
             "git2/cherrypick.h",
             "git2/clone.h",
             "git2/commit.h",
             "git2/common.h",
             "git2/config.h",
             "git2/cred_helpers.h",
+            "git2/credential.h",
+            "git2/credential_helpers.h",
+            "git2/deprecated.h",
             "git2/describe.h",
             "git2/diff.h",
             "git2/errors.h",
@@ -67,7 +76,7 @@ test:
             "git2/ignore.h",
             "git2/index.h",
             "git2/indexer.h",
-            "git2/inttypes.h",
+            "git2/mailmap.h",
             "git2/merge.h",
             "git2/message.h",
             "git2/net.h",
@@ -80,6 +89,7 @@ test:
             "git2/pack.h",
             "git2/patch.h",
             "git2/pathspec.h",
+            "git2/proxy.h",
             "git2/rebase.h",
             "git2/refdb.h",
             "git2/reflog.h",
@@ -97,15 +107,20 @@ test:
             "git2/stdint.h",
             "git2/strarray.h",
             "git2/submodule.h",
+            "git2/sys/alloc.h",
             "git2/sys/commit.h",
             "git2/sys/config.h",
+            "git2/sys/cred.h",
+            "git2/sys/credential.h",
             "git2/sys/diff.h",
             "git2/sys/filter.h",
             "git2/sys/hashsig.h",
             "git2/sys/index.h",
             "git2/sys/mempack.h",
+            "git2/sys/merge.h",
             "git2/sys/odb_backend.h",
             "git2/sys/openssl.h",
+            "git2/sys/path.h",
             "git2/sys/refdb_backend.h",
             "git2/sys/reflog.h",
             "git2/sys/refs.h",
@@ -118,21 +133,18 @@ test:
             "git2/transport.h",
             "git2/tree.h",
             "git2/types.h",
-            "git2/version.h"
+            "git2/version.h",
+            "git2/worktree.h",
     ] %}
 
     # Linux libraries.
     {% set linux_libs = [
             "libgit2.so",
-            "libgit2.so." + version,
-            "libgit2.so." + version_minor
     ] %}
 
     # OSX libraries.
     {% set osx_libs = [
             "libgit2.dylib",
-            "libgit2." + version + ".dylib",
-            "libgit2." + version_minor + ".dylib"
     ] %}
 
     # Windows libraries.

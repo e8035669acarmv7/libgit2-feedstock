@@ -1,6 +1,6 @@
 mkdir build && cd build
 cmake ^
-	-G "NMake Makefiles"                     ^
+	-GNinja                                  ^
 	-DCMAKE_BUILD_TYPE=Release               ^
 	-DCMAKE_PREFIX_PATH=%LIBRARY_PREFIX%     ^
 	-DCMAKE_FIND_ROOT_PATH=%LIBRARY_PREFIX%  ^
@@ -11,4 +11,4 @@ cmake ^
 	-DSTATIC_CRT=off                    ^
 	..
 
-cmake --build . --config Release --target INSTALL
+ninja install
