@@ -13,6 +13,8 @@ source:
   fn: {{ filename }}
   url: https://github.com/{{ name }}/{{ name }}/archive/{{ filename }}
   sha256: {{ sha256 }}
+  patches:
+    - htonll-osx.patch  # [osx]
 
 build:
   number: 0
@@ -41,8 +43,6 @@ requirements:
     - curl
     - libssh2
     - zlib
-  run_constrained:  # [osx]
-    - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx]
 
 test:
   commands:
