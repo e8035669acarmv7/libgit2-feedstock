@@ -10,6 +10,6 @@ index efdf34514..4394f537c 100644
 +# include <machine/endian.h>
 +# include <libkern/OSByteOrder.h>
 +# define htonll OSSwapInt64
- #endif
- 
- #ifndef MIN
+ #elif defined(__OpenBSD__)
+ /* See man page htobe64(3) */
+ # include <endian.h>
