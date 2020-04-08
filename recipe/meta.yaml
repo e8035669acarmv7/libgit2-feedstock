@@ -1,24 +1,16 @@
 {% set name = "libgit2" %}
-{% set version = "0.99.0" %}
-{% set sha256 = "174024310c1563097a6613a0d3f7539d11a9a86517cd67ce533849065de08a11" %}
-
-{% set version_minor = version.split(".")[1] %}
-{% set filename = "v" + version + ".tar.gz" %}
+{% set version = "1.0.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ filename }}
-  url: https://github.com/{{ name }}/{{ name }}/archive/{{ filename }}
-  sha256: {{ sha256 }}
-  patches:
-    - htonll-osx.patch  # [osx]
+  url: https://github.com/{{ name }}/{{ name }}/archive/v{{ version }}.tar.gz
+  sha256: 6a1fa16a7f6335ce8b2630fbdbb5e57c4027929ebc56fcd1ac55edb141b409b4
 
 build:
   number: 0
-  skip: true  # [win and vc<14]
   run_exports:
     # SONAME is based on minor version
     - {{ pin_subpackage("libgit2", max_pin="x.x") }}
@@ -161,7 +153,7 @@ test:
     {% set libs = linux_libs %}                             # [linux]
     {% set libs = osx_libs %}                               # [osx]
     {% set libs = win_libs %}                               # [win]
-    
+
     {% for lib in libs %}
     - test -f $PREFIX/lib/{{ lib }}                         # [not win]
     - if not exist {{ lib }} exit 1                         # [win]
@@ -169,17 +161,18 @@ test:
 
 about:
   home: https://libgit2.github.com
-  license: GPLv2 with Linking Exception
+  license: GPL-2.0-only WITH GCC-exception-2.0
   license_file: COPYING
   summary: 'libgit2 is a portable, pure C implementation of the Git core methods provided as a re-entrant linkable library with a solid API, allowing you to write native speed custom Git applications in any language which supports C bindings.'
 
   # The remaining entries in this section are optional, but recommended
   description: |
-    libgit2 is a portable, pure C implementation of the Git core methods 
-    provided as a re-entrant linkable library with a solid API, allowing 
-    you to write native speed custom Git applications in any language 
+    libgit2 is a portable, pure C implementation of the Git core methods
+    provided as a re-entrant linkable library with a solid API, allowing
+    you to write native speed custom Git applications in any language
     which supports C bindings.
 
 extra:
   recipe-maintainers:
     - shadowwalkersb
+    - xhochy
