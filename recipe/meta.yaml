@@ -1,5 +1,5 @@
 {% set name = "libgit2" %}
-{% set version = "1.0.0" %}
+{% set version = "1.0.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,9 +7,9 @@ package:
 
 source:
   url: https://github.com/{{ name }}/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 6a1fa16a7f6335ce8b2630fbdbb5e57c4027929ebc56fcd1ac55edb141b409b4
+  sha256: 1775427a6098f441ddbaa5bd4e9b8a043c7401e450ed761e69a415530fea81d2
   patches:
-    - htonll-osx.patch
+    - 0001-macOS-Define-htonll-as-OSSwapInt64.patch
 
 build:
   number: 0
@@ -28,6 +28,7 @@ requirements:
     - msinttypes      # [win]
     - openssl         # [not win]
     - libiconv        # [osx]
+    - pcre2  # [unix]
     - curl
     - libssh2
     - zlib
