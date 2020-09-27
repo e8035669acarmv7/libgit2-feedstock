@@ -8,6 +8,8 @@ package:
 source:
   url: https://github.com/{{ name }}/{{ name }}/archive/v{{ version }}.tar.gz
   sha256: 1775427a6098f441ddbaa5bd4e9b8a043c7401e450ed761e69a415530fea81d2
+  patches:
+    - 0001-macOS-Define-htonll-as-OSSwapInt64.patch
 
 build:
   number: 0
