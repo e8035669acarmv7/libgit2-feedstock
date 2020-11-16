@@ -5,7 +5,7 @@ Home: https://libgit2.github.com
 
 Package license: GPL-2.0-only WITH GCC-exception-2.0
 
-Feedstock license: BSD-3-Clause
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/libgit2-feedstock/blob/master/LICENSE.txt)
 
 Summary: libgit2 is a portable, pure C implementation of the Git core methods provided as a re-entrant linkable library with a solid API, allowing you to write native speed custom Git applications in any language which supports C bindings.
 
