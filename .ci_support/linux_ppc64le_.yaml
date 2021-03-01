@@ -1,7 +1,7 @@
 c_compiler:
 - gcc
 c_compiler_version:
-- '8'
+- '9'
 cdt_name:
 - cos7
 channel_sources:
@@ -13,13 +13,15 @@ curl:
 cxx_compiler:
 - gxx
 cxx_compiler_version:
-- '8'
+- '9'
 docker_image:
-- quay.io/condaforge/linux-anvil-ppc64le
+- quay.io/condaforge/linux-anvil-comp7
 libssh2:
 - '1'
 openssl:
 - 1.1.1
+pcre2:
+- '10.36'
 pin_run_as_build:
   curl:
     max_pin: x
@@ -34,3 +36,7 @@ zip_keys:
   - cxx_compiler_version
 zlib:
 - '1.2'
+build_platform:
+- linux-64
+build_platform:
+- linux-64
