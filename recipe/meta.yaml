@@ -1,5 +1,5 @@
 {% set name = "libgit2" %}
-{% set version = "1.1.0" %}
+{% set version = "1.1.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,10 @@ package:
 
 source:
   url: https://github.com/{{ name }}/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 41a6d5d740fd608674c7db8685685f45535323e73e784062cf000a633d420d1e
-  patches:
-    - 0001-macOS-Define-htonll-as-OSSwapInt64.patch
+  sha256: 13a525373f64c711a00a058514d890d1512080265f98e0935ab279393f21a620
 
 build:
-  number: 1
+  number: 0
   run_exports:
     # SONAME is based on minor version
     - {{ pin_subpackage("libgit2", max_pin="x.x") }}
