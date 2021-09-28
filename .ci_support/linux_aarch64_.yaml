@@ -29,8 +29,6 @@ pcre2:
 pin_run_as_build:
   curl:
     max_pin: x
-  openssl:
-    max_pin: x.x.x
   zlib:
     max_pin: x.x
 target_platform:
