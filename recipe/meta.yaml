@@ -1,5 +1,5 @@
 {% set name = "libgit2" %}
-{% set version = "1.3.0" %}
+{% set version = "1.4.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://github.com/{{ name }}/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 192eeff84596ff09efb6b01835a066f2df7cd7985e0991c79595688e6b36444e
+  sha256: 901c2b4492976b86477569502a41c31b274b69adc177149c02099ea88404ef19
 
 build:
-  number: 1
+  number: 0
   run_exports:
     # SONAME is based on minor version
     - {{ pin_subpackage("libgit2", max_pin="x.x") }}
