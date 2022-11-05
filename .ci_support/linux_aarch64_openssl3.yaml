@@ -25,12 +25,7 @@ libssh2:
 openssl:
 - '3'
 pcre2:
-- '10.37'
-pin_run_as_build:
-  curl:
-    max_pin: x
-  zlib:
-    max_pin: x.x
+- '10.40'
 target_platform:
 - linux-aarch64
 zip_keys:
