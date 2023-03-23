@@ -10,7 +10,7 @@ source:
   sha256: a8e2a09835eabb24ace2fd597a78af182e1e199a894e99a90e4c87c849fcd9c4
 
 build:
-  number: 0
+  number: 1
   run_exports:
     # SONAME is based on minor version
     - {{ pin_subpackage("libgit2", max_pin="x.x") }}
