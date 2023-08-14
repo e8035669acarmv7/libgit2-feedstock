@@ -1,5 +1,5 @@
 {% set name = "libgit2" %}
-{% set version = "1.6.4" %}
+{% set version = "1.7.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/{{ name }}/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: d25866a4ee275a64f65be2d9a663680a5cf1ed87b7ee4c534997562c828e500d
+  sha256: 17d2b292f21be3892b704dddff29327b3564f96099a1c53b00edc23160c71327
 
 build:
   number: 0
