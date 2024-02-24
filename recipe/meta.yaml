@@ -8,9 +8,13 @@ package:
 source:
   url: https://github.com/{{ name }}/{{ name }}/archive/v{{ version }}.tar.gz
   sha256: de384e29d7efc9330c6cdb126ebf88342b5025d920dcb7c645defad85195ea7f
+  patches:
+    # TODO: Propose this patch to upstream.
+    # Downside: This breaks pkg-config for static builds (not relevant for conda-forge).
+    - 0001-Use-Requires.internal-instead-of-Requires.private.patch
 
 build:
-  number: 1
+  number: 2
   run_exports:
     # SONAME is based on minor version
     - {{ pin_subpackage("libgit2", max_pin="x.x") }}
