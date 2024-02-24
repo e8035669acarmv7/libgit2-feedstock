@@ -33,12 +33,15 @@ requirements:
     - zlib
 
 test:
+  requires:
+    - pkg-config
   commands:
     - test -f $PREFIX/include/git2.h                 # [not win]
     - if not exist %LIBRARY_INC%\\git2.h exit 1      # [win]
     - test -f $PREFIX/lib/libgit2${SHLIB_EXT}        # [unix]
     - if not exist %LIBRARY_LIB%\\git2.lib exit 1    # [win]
     - if not exist %LIBRARY_BIN%\\git2.dll exit 1    # [win]
+    - pkg-config --cflags libgit2
 
 about:
   home: https://libgit2.github.com
