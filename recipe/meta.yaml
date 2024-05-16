@@ -1,5 +1,5 @@
 {% set name = "libgit2" %}
-{% set version = "1.8.0" %}
+{% set version = "1.8.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/{{ name }}/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 9e1d6a880d59026b675456fbb1593c724c68d73c34c0d214d6eb848e9bbd8ae4
+  sha256: 8c1eaf0cf07cba0e9021920bfba9502140220786ed5d8a8ec6c7ad9174522f8e
   patches:
     # TODO: Propose this patch to upstream.
     # Downside: This breaks pkg-config for static builds (not relevant for conda-forge).
@@ -24,8 +24,8 @@ requirements:
     - cmake
     - ninja
     - pkg-config      # [not win]
-    - sysroot_linux-64 2.17  # [linux64]
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
   host:
     - msinttypes      # [win]
