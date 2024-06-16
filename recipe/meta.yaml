@@ -14,7 +14,7 @@ source:
     - 0001-Use-Requires.internal-instead-of-Requires.private.patch
 
 build:
-  number: 0
+  number: 1
   run_exports:
     # SONAME is based on minor version
     - {{ pin_subpackage("libgit2", max_pin="x.x") }}
