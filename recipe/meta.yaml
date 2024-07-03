@@ -1,5 +1,5 @@
 {% set name = "libgit2" %}
-{% set version = "1.7.1" %}
+{% set version = "1.8.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,14 @@ package:
 
 source:
   url: https://github.com/{{ name }}/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 17d2b292f21be3892b704dddff29327b3564f96099a1c53b00edc23160c71327
+  sha256: 8c1eaf0cf07cba0e9021920bfba9502140220786ed5d8a8ec6c7ad9174522f8e
+  patches:
+    # TODO: Propose this patch to upstream.
+    # Downside: This breaks pkg-config for static builds (not relevant for conda-forge).
+    - 0001-Use-Requires.internal-instead-of-Requires.private.patch
 
 build:
-  number: 0
+  number: 1
   run_exports:
     # SONAME is based on minor version
     - {{ pin_subpackage("libgit2", max_pin="x.x") }}
@@ -20,8 +24,8 @@ requirements:
     - cmake
     - ninja
     - pkg-config      # [not win]
-    - sysroot_linux-64 2.17  # [linux64]
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
   host:
     - msinttypes      # [win]
@@ -33,12 +37,15 @@ requirements:
     - zlib
 
 test:
+  requires:
+    - pkg-config
   commands:
     - test -f $PREFIX/include/git2.h                 # [not win]
     - if not exist %LIBRARY_INC%\\git2.h exit 1      # [win]
     - test -f $PREFIX/lib/libgit2${SHLIB_EXT}        # [unix]
     - if not exist %LIBRARY_LIB%\\git2.lib exit 1    # [win]
     - if not exist %LIBRARY_BIN%\\git2.dll exit 1    # [win]
+    - pkg-config --cflags --libs libgit2
 
 about:
   home: https://libgit2.github.com
